@@ -1,0 +1,31 @@
+{
+  "system":{
+    "systemID": 1,
+    "systemName": "ISO 9001:2015 or ISO 14001:2015",
+    "systemDescription": "a standard for general organizational quality management systems (QMS), including vendor management. ISO comprises QMS standards for specific industries",
+    "status": "active",
+    "createdDate": "2021-12-10T19:03:29.921Z",
+    "createdBy": "abc@example.com",
+    "updatedDate": "2021-12-10T19:03:29.921Z",
+    "updatedBy": "abc@example.com"
+  },
+
+"Organisation":{
+    "organiationID": 1,
+    "organiationName": "abc corp",
+    "appURL": "abc.com",
+    "geography": "IN",
+    "status": "active",
+    "createdDate": "2021-12-10T19:03:29.921Z",
+    "createdBy": "abc@example.com",
+    "updatedDate": "2021-12-10T19:03:29.921Z",
+    "updatedBy": "abc@example.com",
+    "orgadmins": [
+      {
+        "email": "abc@example.com",
+        "userid": 1
+      }
+    ]
+  }
+}
+

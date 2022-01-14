@@ -2,11 +2,13 @@ const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
 const geocode = require('./utils/geocode')
-const forcasting = require('./utils/forecasting')
+//const forcasting = require('./utils/forecasting')
 const forecasting = require('./utils/forecasting')
+//const system = require('./test')
 //const forecasting = require('./utils/forecasting')
 
 const app = express()
+const port = process.env.PORT||3000
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -45,18 +47,20 @@ app.get('/help', (req, res) => {
 
 app.get('/weather', (req, res) => {
 if (!req.query.address){
-return res.send("Please pass the Address")
+    return res.send({
+        error: 'You must provide an address!'
+    })
 }
 geocode(req.query.address,(error,{latitude,longitude,location}={})=>{
     if(error)
     {
-        return res.send(error)
+        return res.send({error})
     }
     forecasting(latitude, longitude, (error, forecastData) => 
     {
         if (error) 
         {
-            return res.send({error:"Please stay quiet"})
+            return res.send({error})
         }
 
         res.send(
@@ -70,7 +74,6 @@ geocode(req.query.address,(error,{latitude,longitude,location}={})=>{
     
     })
 })
-   
 
     
    
@@ -90,6 +93,6 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
+app.listen(port, () => {
+    console.log('Server is up on port '+port)
 })
